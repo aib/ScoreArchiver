@@ -97,7 +97,8 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         position = settings.value("MainWindow/Position",
                                   QVariant(QPoint(0, 0)))
         self.move(position)
-        self.restoreState(settings.value("MainWindow/State"))
+        self.restoreState(settings.value("MainWindow/State",
+                                         QByteArray()))
     def about_me(self):
         QMessageBox.about(self, self.tr("About ScoreArchiver"), self.tr("ScoreArchiver - 1.0\n\nTurkish Music Archive Viewer\n\n\nEmre Pinarbasi   <emrepinarbasi@gmail.com>\nTaha Dogan Gunes <tdgunes@gmail.com>\n\nLicense: GPLv3\n\nWeb Site: code.google.com/p/scorearchiver"))
 
