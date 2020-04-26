@@ -11,13 +11,13 @@ from score_ui import Ui_Dialog
 import platform
 
 PLA = platform.system()
-	
+
 class ScoreDialog(QDialog, Ui_Dialog):
     def __init__(self, archiveid,dpath):
         QDialog.__init__(self)
         self.setupUi(self)
 
-        self.connect(self.comboBox, SIGNAL("activated(int)"), self.addtoList) 
+        self.connect(self.comboBox, SIGNAL("activated(int)"), self.addtoList)
 
         self.connect(self.listWidget, SIGNAL("currentRowChanged(int)"), self.showPicture)
 
@@ -39,7 +39,7 @@ class ScoreDialog(QDialog, Ui_Dialog):
         self.scene = QGraphicsScene(self)
         self.scene.setSceneRect(0,0,612,792)
         self.graphicsView.setScene(self.scene)
-    
+
 
         if PLA == "Windows":
             settings = QSettings("settings.ini", QSettings.IniFormat)
@@ -72,7 +72,7 @@ class ScoreDialog(QDialog, Ui_Dialog):
             filename = self.listWidget.currentItem().text()
             picture = QPixmap("%s%sdata%s%s%s%s%s%s" % (self.dpath, os.sep, os.sep, str(self.archiveid), os.sep, str(self.comboBox.currentIndex()+1), os.sep,filename))
             self.currentPixmap = QPixmap("%s%sdata%s%s%s%s%s%s" % (self.dpath, os.sep, os.sep, str(self.archiveid), os.sep, str(self.comboBox.currentIndex()+1), os.sep, filename))
-            
+
             item = QGraphicsPixmapItem(self.currentPixmap)
             item.setPos(0,0)
             item.setFlags(QGraphicsItem.ItemIsSelectable|QGraphicsItem.ItemIsMovable)
@@ -81,14 +81,14 @@ class ScoreDialog(QDialog, Ui_Dialog):
             self.scene.addItem(item)
 
     def addtoList(self, number):
-       
+
         files = []
         self.listWidget.clear()
         dirs = self.dircleaner(os.listdir("%s%sdata%s%s%s%s" % (self.dpath,os.sep, os.sep,str(self.archiveid),os.sep, str(number+1))))
         dirs.sort()
         for i in dirs:
             self.listWidget.addItem(i)
-        
+
     def makelistString(self, alist):
         a = []
         for i in alist:
@@ -100,7 +100,7 @@ class ScoreDialog(QDialog, Ui_Dialog):
             if i[0] != ".":
                 a.append(i)
         return a
-      
+
     def closeEvent(self, event):
         if PLA == "Windows":
             settings = QSettings("settings.ini", QSettings.IniFormat)

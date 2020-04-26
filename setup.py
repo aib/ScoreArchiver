@@ -25,7 +25,7 @@ if PLATFORM == "Linux":
     os.system("pyrcc4 ./data/scorearchiver.qrc -o ./ScoreArchiver/scorearchiver_rc.py")
     os.chmod("./ScoreArchiver/ScoreArchiver", 0755)
     os.system("touch ./ScoreArchiver/__init__.py")
- 
+
     data = [("share/applications", ["./data/ScoreArchiver.desktop"]),
             ("share/pixmaps", ["./data/scorearchiver.png"]),
             ("share/scorearchiver/qm", glob.glob("./ScoreArchiver/*.qm"))
@@ -33,7 +33,7 @@ if PLATFORM == "Linux":
 
     setup(
         name = "ScoreArchiver",
-        version = "1.0", 
+        version = "1.0",
         description = "Shows Turkish Music Archive",
         author = "Taha Doğan Güneş",
         author_email = "tdgunes@gmail.com",
@@ -55,7 +55,7 @@ elif PLATFORM == "Darwin":
             pass
         try:
             os.system("rm -R -f ./ScoreArchiver.app")
-        except: 
+        except:
              pass
         try:
             os.system("rm -R -f ./ScoreArchiver.dmg")
@@ -74,11 +74,11 @@ elif PLATFORM == "Darwin":
         shutil.copy(i, "build/")
         os.remove(i)
    # a = raw_input("go?:")
-    
+
     os.system("pyrcc4 ./data/scorearchiver.qrc -o ./build/scorearchiver_rc.py")
     os.system("pyuic4 ./ui/main.ui -o ./build/main_ui.py")
     os.system("pyuic4 ./ui/score.ui -o ./build/score_ui.py")
-     
+
     shutil.copy("data/scorearchiver.icns", "build/")
     shutil.copy("src/ScoreArchiver.py","build/")
     shutil.copy("src/graphic.py","build/")
@@ -93,7 +93,7 @@ elif PLATFORM == "Darwin":
         app=APP,
         options={'py2app': OPTIONS},
         setup_requires=['py2app']
-) 
+)
     try:
         os.system("rm -R -f ./build")
         os.system("cp  -f -R /Library/Frameworks/QtGui.framework ./")
@@ -124,7 +124,7 @@ elif PLATFORM == "Darwin":
         askme = raw_input("Do you want me to make you a .dmg package?(y/n)\n:-> ")
         if askme == "y":
             os.system("hdiutil create -imagekey zlib-level=9 -srcfolder ScoreArchiver/ ./ScoreArchiver.dmg")
-            
+
     except:
         pass
     os.chdir(os.getcwd()[:-5])
@@ -145,22 +145,22 @@ elif PLATFORM == "Windows":
     NAME="ScoreArchiver"
 
     try:
-        
-       
+
+
         os.mkdir("build")
     except:
         pass
-	
+
     os.system("pyrcc4 .\\data\\scorearchiver.qrc -o .\\build\\scorearchiver_rc.py")
     os.system("pyuic4 .\\ui/main.ui -o .\\build\\main_ui.py")
     os.system("pyuic4 .\\ui/score.ui -o .\\build\\score_ui.py")
     #preparing package
-		
+
     tsfiles = glob.glob(".\\data\\*.ts")
     pyfiles = glob.glob(os.getcwd()+".\\src\\*.py")
     for i in pyfiles:
 	    shutil.copy(i, "build\\")
-		
+
     for i in tsfiles:
         os.system("lrelease -verbose %s" % i.split("/")[-1]),
     qmfiles = glob.glob(os.getcwd()+"\\data\\*.qm")
@@ -172,7 +172,7 @@ elif PLATFORM == "Windows":
 
     data=[("",qmfiles)]
 
-  
+
 
 
     os.chdir("build")
@@ -180,8 +180,8 @@ elif PLATFORM == "Windows":
 
     # To build $python.exe setup.py py2exe
     setup(windows=[{"script" : "ScoreArchiver.py","icon_resources":[(1,"scorearchiver.ico")] }],
-          options={"py2exe" : 
-                  {"includes" : ["sip", 
+          options={"py2exe" :
+                  {"includes" : ["sip",
                                  "PyQt4.QtGui",
                                  "PyQt4.QtCore",
                                  "score_ui",
@@ -197,7 +197,7 @@ elif PLATFORM == "Windows":
                                  "time",
                                  "os",
                                  "sys",],
-                   "dll_excludes":["MSVCP90.dll"]}}, 
+                   "dll_excludes":["MSVCP90.dll"]}},
           data_files=data)
 
     shutil.copytree("dist", "..\\ScoreArchiver\\")

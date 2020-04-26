@@ -45,7 +45,7 @@ class libdatabase:
         self.connect()
         self.c.execute('''SELECT * FROM archive WHERE LTRIM({0}) LIKE \'{1}%\' '''.format(category, text))
         row = self.get_list(self.c)
-        return row 
+        return row
     def getAll(self):
         self.connect()
         self.c.execute('''SELECT * FROM archive ORDER BY orderer''')
