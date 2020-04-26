@@ -16,10 +16,8 @@ from main_ui import Ui_MainWindow
 from database import libdatabase
 from score import ScoreDialog
 import platform
-import importlib
 
 PLA = platform.system()
-importlib.reload(sys).setdefaultencoding("utf-8")
 
 if platform.system() == "Darwin" and platform.system() == "Linux":
 

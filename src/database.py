@@ -4,9 +4,6 @@
 import sqlite3, os, sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
-import importlib
-
-importlib.reload(sys).setdefaultencoding("utf-8")
 
 def rplace(text):
     text = text.replace("ç","c")
