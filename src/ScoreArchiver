@@ -1,0 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from ScoreArchiver import ScoreArchiver
+
+ScoreArchiver.main()
+
+

@@ -1,0 +1,14 @@
+#labels Phase-Implementation,Phase-Requirements
+Multi Platform Score Archiver Software
+
+= Introduction =
+
+Score Archiver is a multi platform score archive software that include Turkish Music Scores' database
+
+
+= Details =
+
+This software will include TSM scores. Average number of TSM scores : 32000
+After the July 2011, THM scores to be added
+
+1000 TSM scores' file datas has been added in data folder. Number of 1000 TSM scores' file data is 2001.

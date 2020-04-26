@@ -1,0 +1,18 @@
+ScoreArchiver - 1.0:
+
+- > Linux
+
+- Linux users need to install PyQt 4.5+ and Python 2.5+ via their package managers.(You need to install PyQt's tools like pyuic4, pyrcc4.)
+
+- Write "sudo python setup.py install" to the terminal. And it will install.
+
+- > Mac OS X
+
+- Mac users can find our .dmg package in our website("code.google.com/p/scorearchiver"), but if you want to build a package with setup.py. You need latest versions of(Snow Leopard recommended) xcode, Qt, PyQt, sip, cx_freeze and py2app. After you install them you need to write "sudo python setup.py py2app" it will ask you whether you want a dmg package or not. Choose as you wish.
+
+
+- > Windows
+
+- Windows users can find our binary package in our website("code.google.com/p/scorearchiver"), but if you want to build a binary package, you need python 2.6, py2exe for python2.6 and PyQt 4.5 for python 2.6. Once you have them all, write "C:\Python26\python.exe setup.py py2exe" to your msdos console.
+
+ 

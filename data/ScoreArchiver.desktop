@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ScoreArchiver
+GenericName=ScoreArchiver
+Type=Application
+Comment=Shows Turkish Music Archive
+Comment[tr]=Türk Müzik Arşivini Gösterir
+Exec=ScoreArchiver
+Icon=scorearchiver
+Categories=Audio;

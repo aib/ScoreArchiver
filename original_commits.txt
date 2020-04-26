@@ -1,0 +1,51 @@
+tdgunes 	Aug 25, 2010 	51 	Pardus Language support
+tdgunes 	Aug 25, 2010 	50 	Added pardus support, deleted last commit
+tdgunes 	Aug 25, 2010 	49 	changed search command's sql statment
+tdgunes 	Aug 20, 2010 	48 	typeError
+tdgunes 	Aug 20, 2010 	47 	fixed a bug on linux
+tdgunes 	Aug 20, 2010 	46 	no need to write a INSTALL
+tdgunes 	Aug 20, 2010 	45 	how-to build doc in README, deleted TODO, AUTHORS, COPYING etc.
+tdgunes 	Aug 20, 2010 	44 	fully working linux support with language
+tdgunes 	Aug 19, 2010 	43 	i problem
+tdgunes 	Aug 19, 2010 	42 	added qrc compiler line
+tdgunes 	Aug 19, 2010 	41 	Linux support
+tdgunes 	Aug 19, 2010 	40 	added ScoreArchiver.desktop file for Linux distros
+tdgunes 	Aug 19, 2010 	39 	latest windows version
+tdgunes 	Aug 19, 2010 	38 	qsettings support for Windows, icon file is working with .exe file.
+tdgunes 	Aug 19, 2010 	37 	broken mac support fixed
+tdgunes 	Aug 19, 2010 	36 	Windows support to make it working you need to put the database near to the .exe
+tdgunes 	Aug 17, 2010 	35 	forget to put py2app module inside if
+tdgunes 	Aug 17, 2010 	34 	new builder for mac, translation system works better now, added a donate button
+tdgunes 	Aug 17, 2010 	33 	added .pro file again
+tdgunes 	Aug 17, 2010 	32 	added language support on mac
+tdgunes 	Aug 17, 2010 	31 	added Mac support in setup.py and renamed main.py as ScoreArchiver.py
+tdgunes 	Aug 16, 2010 	30 	dbCreator fixed
+tdgunes 	Aug 16, 2010 	29 	translation support
+tdgunes 	Aug 16, 2010 	28 	unhandled exception window's bug fixed, added logo support (.qrc file .png file)
+tdgunes 	Aug 16, 2010 	27 	forgot to delete a line
+tdgunes 	Aug 16, 2010 	26 	saving column widths works, bugs fixed when user closes file_dialog, added the d
+tdgunes 	Aug 15, 2010 	25 	small bug fix
+tdgunes 	Aug 15, 2010 	24 	paste bug
+tdgunes 	Aug 15, 2010 	23 	added a dbCreator, ORDER BY problem solved, messagebox added to the main.py in o
+tdgunes 	Aug 11, 2010 	22 	a bug solved when user tries to change the database+data\'s dir\'s path
+tdgunes 	Aug 11, 2010 	21 	with qsettings, it is really to store database path. With QTimer, it shows windo
+tdgunes 	Aug 10, 2010 	20 	solved wrong id number which sent to score dialog
+tdgunes 	Aug 10, 2010 	19 	x = 0 changed to x = x + 1
+tdgunes 	Aug 10, 2010 	18 	changed main interface, removed vertical headers, added a new id field in order
+tdgunes 	Aug 9, 2010 	17 	solved a small bug on score dialog
+tdgunes 	Aug 9, 2010 	16 	fully working score dialog, added qgraphicsview to zoom and drag
+tdgunes 	Aug 4, 2010 	15 	ui file changed
+tdgunes 	Aug 4, 2010 	14 	added zooming to the scores, fixed some bugs
+tdgunes 	Aug 4, 2010 	13 	score.py has now printing support(not tested), can view pictures(resizing doesn'
+tdgunes 	Aug 3, 2010 	12 	disabled picture table, added score.py
+tdgunes 	Aug 3, 2010 	11 	Changed main.ui, added score.ui
+tdgunes 	Aug 3, 2010 	10 	added new gui and a first working tabwidget, fixed a bug in database.py
+emrepinarbasi 	Jul 30, 2010 	9 	Edited wiki page through web user interface.
+emrepinarbasi 	Jul 12, 2010 	8 	Edited wiki page through web user interface.
+emrepinarbasi 	Jul 12, 2010 	7 	Created wiki page through web user interface by Emre PINARBAŞI
+emrepinarbasi 	Jun 28, 2010 	6 	lyricist named as poet
+tdgunes 	Jun 28, 2010 	5 	time is added
+emrepinarbasi 	Jun 23, 2010 	4 	harmony named as makam
+tdgunes 	Jun 23, 2010 	3 	database library has functions like reading csv and adding data to the database
+tdgunes 	Jun 23, 2010 	2 	first database object, data structure
+	Jun 23, 2010 	1 	Initial directory structure.
