@@ -7,7 +7,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 from os import getcwd, sep, listdir
-import time, traceback, cStringIO
+import time, traceback, io
 
 
 
@@ -16,9 +16,10 @@ from main_ui import Ui_MainWindow
 from database import libdatabase
 from score import ScoreDialog
 import platform
+import importlib
 
 PLA = platform.system()
-reload(sys).setdefaultencoding("utf-8")
+importlib.reload(sys).setdefaultencoding("utf-8")
 
 if platform.system() == "Darwin" and platform.system() == "Linux":
 
@@ -35,7 +36,7 @@ def excepthook(excType, excValue, tracebackobj):
     separator = '-' * 80
     notice = "An unhandled exception occurred.\nPlease report the problem via email to <scorearchiver@gmail.com>\nVersion: \"1.0\".\n\nError information:\n"
     timeString = time.strftime("%d-%m-%Y  %H:%M:%S")
-    tbinfofile = cStringIO.StringIO()
+    tbinfofile = io.StringIO()
     traceback.print_tb(tracebackobj, None, tbinfofile)
     tbinfofile.seek(0)
     tbinfo = tbinfofile.read()
@@ -73,7 +74,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
                 sys.exit(1)
         else:
             self.savePath = self.returnDBPath()
-        print self.savePath
+        print(self.savePath)
         if self.savePath:
             path = str(self.savePath+sep+"score.db")
 
@@ -113,13 +114,13 @@ class MainWindow(QMainWindow,Ui_MainWindow):
             return pname
         else:
 
-            pname = unicode(QFileDialog.getExistingDirectory(self, self.tr("ScoreArchiver")+self.tr("Add the database directory")))
+            pname = str(QFileDialog.getExistingDirectory(self, self.tr("ScoreArchiver")+self.tr("Add the database directory")))
 
             if pname and QFile.exists(pname+sep+"score.db") and  QFile.exists(pname+sep+"data"):
-                print pname
+                print(pname)
                 return pname
             else:
-                print pname
+                print(pname)
                 sys.exit(1)
 
     def closeEvent(self, event):
@@ -164,7 +165,8 @@ class MainWindow(QMainWindow,Ui_MainWindow):
 
                  else:
                      QMessageBox.warning(self, self.tr("Score Archiver - Record Not Found"), str(number)+ self.tr("\'s score data is missing,\nIf you want to add,\nplease contact scorearchiver@gmail.com"))
-            except OSError, (error_no, error):
+            except OSError as ose:
+                 (error_no, error) = ose.args
                  if error_no is 2:
                      QMessageBox.warning(self, self.tr("Score Archiver - Record Not Found"), str(number)+ self.tr("\'s score data is missing,\nIf you want to add,\nplease contact scorearchiver@gmail.com"))
 

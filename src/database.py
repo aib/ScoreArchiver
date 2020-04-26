@@ -4,8 +4,9 @@
 import sqlite3, os, sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+import importlib
 
-reload(sys).setdefaultencoding("utf-8")
+importlib.reload(sys).setdefaultencoding("utf-8")
 
 def rplace(text):
     text = text.replace("ç","c")
@@ -20,7 +21,7 @@ def rplace(text):
     return text
 
 def dbCreator():
-    a = raw_input("Enter a .csv file to create a 'score.db': ")
+    a = input("Enter a .csv file to create a 'score.db': ")
     b = libdatabase()
     b.datapath = "score.db"
     b.fillToArchive(a)
@@ -81,9 +82,9 @@ class libdatabase:
         for i in readlist:
             x = x + 1
             second = i.split(";")
-            print "- "+str(x)+" added " + " - "
+            print("- "+str(x)+" added " + " - ")
             a = rplace(second[0].strip())
-            print a
+            print(a)
             self.addToArchive(second[0].strip(),second[1].strip(),second[2].strip(),
                               second[3].strip(),second[4].strip(),second[5].strip(),a)
 

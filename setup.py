@@ -20,10 +20,10 @@ if PLATFORM == "Linux":
             shutil.copy(i,"ScoreArchiver/")
         for i in glob.glob("./ui/*.ui"):
             command = "pyuic4 "+i+" -o "+ "ScoreArchiver/"+ i.split("/")[-1].replace(".","_")+".py"
-            print command
+            print(command)
             os.system(command)
     os.system("pyrcc4 ./data/scorearchiver.qrc -o ./ScoreArchiver/scorearchiver_rc.py")
-    os.chmod("./ScoreArchiver/ScoreArchiver", 0755)
+    os.chmod("./ScoreArchiver/ScoreArchiver", 0o755)
     os.system("touch ./ScoreArchiver/__init__.py")
 
     data = [("share/applications", ["./data/ScoreArchiver.desktop"]),
@@ -45,9 +45,9 @@ if PLATFORM == "Linux":
 
 elif PLATFORM == "Darwin":
     import py2app
-    print "Building on Mac"
+    print("Building on Mac")
     #icon building
-    go = raw_input("Warning! - You need cx_freeze to build!(ok to continue)")
+    go = input("Warning! - You need cx_freeze to build!(ok to continue)")
     try:
         try:
             os.system("rm -R -f ./build")
@@ -69,7 +69,7 @@ elif PLATFORM == "Darwin":
     for i in tsfiles:
         os.system("lrelease -verbose ./data/%s" % i.split("/")[-1]),
     qmfiles = glob.glob("./data/*.qm")
-    print qmfiles
+    print(qmfiles)
     for i in qmfiles:
         shutil.copy(i, "build/")
         os.remove(i)
@@ -105,7 +105,7 @@ elif PLATFORM == "Darwin":
     for i in qmfiles:
         shutil.copy(i, "ScoreArchiver/")
     myfiles = os.listdir("./ScoreArchiver/")
-    print myfiles
+    print(myfiles)
     for i in myfiles:
         shutil.copy(("ScoreArchiver/%s" % i),"./dist/ScoreArchiver.app/Contents/MacOS/")
     try:
@@ -121,7 +121,7 @@ elif PLATFORM == "Darwin":
         os.system("sudo rm -R -f ./dist/ScoreArchiver.app/Contents/Resources/site.pyc")
         os.system("sudo rm -R -f ./ScoreArchiver")
         os.system("sudo mv  ./dist/ ./ScoreArchiver")
-        askme = raw_input("Do you want me to make you a .dmg package?(y/n)\n:-> ")
+        askme = input("Do you want me to make you a .dmg package?(y/n)\n:-> ")
         if askme == "y":
             os.system("hdiutil create -imagekey zlib-level=9 -srcfolder ScoreArchiver/ ./ScoreArchiver.dmg")
 
@@ -138,7 +138,7 @@ elif PLATFORM == "Darwin":
     except:
         pass
     finally:
-        print "Building is finished!, If you want to put version number\nYou need to edit info.plist inside Contents!"
+        print("Building is finished!, If you want to put version number\nYou need to edit info.plist inside Contents!")
 
 elif PLATFORM == "Windows":
     import py2exe
@@ -164,7 +164,7 @@ elif PLATFORM == "Windows":
     for i in tsfiles:
         os.system("lrelease -verbose %s" % i.split("/")[-1]),
     qmfiles = glob.glob(os.getcwd()+"\\data\\*.qm")
-    print qmfiles
+    print(qmfiles)
     shutil.copy(".\\data\\scorearchiver.ico","build\\")
     #creating icons
 
