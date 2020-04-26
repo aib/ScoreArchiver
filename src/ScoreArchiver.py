@@ -89,7 +89,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         if PLA == "Darwin":
             QTimer.singleShot(0, self.fill_data)
         else:
-	    self.fill_data()
+            self.fill_data()
 
         size = settings.value("MainWindow/Size",
                               QVariant(QSize(600, 500))).toSize()
@@ -124,7 +124,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
 
     def closeEvent(self, event):
         if self.savePath:
-	    if PLA == "Windows":
+            if PLA == "Windows":
                 settings = QSettings("settings.ini", QSettings.IniFormat)
             else:
                 settings = QSettings()

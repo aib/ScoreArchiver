@@ -14,7 +14,7 @@ if PLATFORM == "Linux":
         for i in myfiles:
             shutil.copy("./src/"+i,"ScoreArchiver/")
         for i in glob.glob("./data/*.ts"):
-	    os.system("lrelease -verbose " + i)
+            os.system("lrelease -verbose " + i)
             os.system("lrelease-qt4 -verbose " + i)
         for i in glob.glob("./data/*.qm"):
             shutil.copy(i,"ScoreArchiver/")
@@ -159,7 +159,7 @@ elif PLATFORM == "Windows":
     tsfiles = glob.glob(".\\data\\*.ts")
     pyfiles = glob.glob(os.getcwd()+".\\src\\*.py")
     for i in pyfiles:
-	    shutil.copy(i, "build\\")
+        shutil.copy(i, "build\\")
 
     for i in tsfiles:
         os.system("lrelease -verbose %s" % i.split("/")[-1]),
