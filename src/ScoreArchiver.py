@@ -3,8 +3,9 @@
 
 import sys
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
 from os import getcwd, sep, listdir
 import time, traceback, io
@@ -58,7 +59,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         else:
             settings = QSettings()
         self.savePath = None
-        widths = settings.value("widths").toStringList()
+        widths = settings.value("widths")
         if widths:
             for i in range(0,7):
                 self.tableWidget.setColumnWidth(i,int(widths[i]))
@@ -80,10 +81,10 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         self.database.datapath = path
         self.database.connect()
 
-        self.connect(self.actionAbout, SIGNAL("triggered()"), self.about_me)
-        self.connect(self.toolButton, SIGNAL("clicked()"), self.go_to_donate)
-        self.connect(self.scoretool, SIGNAL("clicked()"), self.go_to_score)
-        self.connect(self.lineEdit, SIGNAL("returnPressed()"), self.search_data)
+        self.actionAbout.triggered.connect(self.about_me)
+        self.toolButton.clicked.connect(self.go_to_donate)
+        self.scoretool.clicked.connect(self.go_to_score)
+        self.lineEdit.returnPressed.connect(self.search_data)
 
         if PLA == "Darwin":
             QTimer.singleShot(0, self.fill_data)
@@ -91,12 +92,12 @@ class MainWindow(QMainWindow,Ui_MainWindow):
             self.fill_data()
 
         size = settings.value("MainWindow/Size",
-                              QVariant(QSize(600, 500))).toSize()
+                              QVariant(QSize(600, 500)))
         self.resize(size)
         position = settings.value("MainWindow/Position",
-                                  QVariant(QPoint(0, 0))).toPoint()
+                                  QVariant(QPoint(0, 0)))
         self.move(position)
-        self.restoreState(settings.value("MainWindow/State").toByteArray())
+        self.restoreState(settings.value("MainWindow/State"))
     def about_me(self):
         QMessageBox.about(self, self.tr("About ScoreArchiver"), self.tr("ScoreArchiver - 1.0\n\nTurkish Music Archive Viewer\n\n\nEmre Pinarbasi   <emrepinarbasi@gmail.com>\nTaha Dogan Gunes <tdgunes@gmail.com>\n\nLicense: GPLv3\n\nWeb Site: code.google.com/p/scorearchiver"))
 
@@ -105,7 +106,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
         QDesktopServices.openUrl(QUrl("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=2YSBG5295B3XE&lc=TR&item_name=Scorearchiver&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"))
     def returnDBPath(self):
         settings = QSettings()
-        pname = (settings.value("databasePath").toString())
+        pname = settings.value("databasePath")
 
         if pname and QFile.exists(pname+sep+"score.db") and  QFile.exists(pname+sep+"data"):
 

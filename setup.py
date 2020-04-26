@@ -19,10 +19,10 @@ if PLATFORM == "Linux":
         for i in glob.glob("./data/*.qm"):
             shutil.copy(i,"ScoreArchiver/")
         for i in glob.glob("./ui/*.ui"):
-            command = "pyuic4 "+i+" -o "+ "ScoreArchiver/"+ i.split("/")[-1].replace(".","_")+".py"
+            command = "pyuic5 "+i+" -o "+ "ScoreArchiver/"+ i.split("/")[-1].replace(".","_")+".py"
             print(command)
             os.system(command)
-    os.system("pyrcc4 ./data/scorearchiver.qrc -o ./ScoreArchiver/scorearchiver_rc.py")
+    os.system("pyrcc5 ./data/scorearchiver.qrc -o ./ScoreArchiver/scorearchiver_rc.py")
     os.chmod("./ScoreArchiver/ScoreArchiver", 0o755)
     os.system("touch ./ScoreArchiver/__init__.py")
 
@@ -75,9 +75,9 @@ elif PLATFORM == "Darwin":
         os.remove(i)
    # a = raw_input("go?:")
 
-    os.system("pyrcc4 ./data/scorearchiver.qrc -o ./build/scorearchiver_rc.py")
-    os.system("pyuic4 ./ui/main.ui -o ./build/main_ui.py")
-    os.system("pyuic4 ./ui/score.ui -o ./build/score_ui.py")
+    os.system("pyrcc5 ./data/scorearchiver.qrc -o ./build/scorearchiver_rc.py")
+    os.system("pyuic5 ./ui/main.ui -o ./build/main_ui.py")
+    os.system("pyuic5 ./ui/score.ui -o ./build/score_ui.py")
 
     shutil.copy("data/scorearchiver.icns", "build/")
     shutil.copy("src/ScoreArchiver.py","build/")
@@ -151,9 +151,9 @@ elif PLATFORM == "Windows":
     except:
         pass
 
-    os.system("pyrcc4 .\\data\\scorearchiver.qrc -o .\\build\\scorearchiver_rc.py")
-    os.system("pyuic4 .\\ui/main.ui -o .\\build\\main_ui.py")
-    os.system("pyuic4 .\\ui/score.ui -o .\\build\\score_ui.py")
+    os.system("pyrcc5 .\\data\\scorearchiver.qrc -o .\\build\\scorearchiver_rc.py")
+    os.system("pyuic5 .\\ui/main.ui -o .\\build\\main_ui.py")
+    os.system("pyuic5 .\\ui/score.ui -o .\\build\\score_ui.py")
     #preparing package
 
     tsfiles = glob.glob(".\\data\\*.ts")
@@ -182,8 +182,8 @@ elif PLATFORM == "Windows":
     setup(windows=[{"script" : "ScoreArchiver.py","icon_resources":[(1,"scorearchiver.ico")] }],
           options={"py2exe" :
                   {"includes" : ["sip",
-                                 "PyQt4.QtGui",
-                                 "PyQt4.QtCore",
+                                 "PyQt5.QtGui",
+                                 "PyQt5.QtCore",
                                  "score_ui",
                                  "scorearchiver_rc",
                                  "main_ui",

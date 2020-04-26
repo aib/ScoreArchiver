@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3, os, sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
 def rplace(text):
     text = text.replace("ç","c")
